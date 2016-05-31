@@ -49,13 +49,20 @@ namespace Windows_Add_To_Start
             string extension = Path.GetExtension(path);
 
             //If the path is not a shortcut
-            if (extension != ".lnk" || extension != ".url")
+            if (extension != ".lnk" && extension != ".url" && extension != ".appref-ms")
             {
                 CreateShortcut(fileName, windowsDrive + startMenuPath, path);
             }
-            else
+            else //If the path is a shortcut
             {
-
+                try
+                {
+                    System.IO.File.Copy(path, windowsDrive + startMenuPath + Path.DirectorySeparatorChar + fileName + extension);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
             }
             //return;
         }
@@ -69,17 +76,14 @@ namespace Windows_Add_To_Start
             shortcut.WorkingDirectory = Application.StartupPath; //?
             //shortcut.IconLocation = @"c:\myicon.ico";           // The icon of the shortcut
             shortcut.TargetPath = targetFileLocation;            // The path of the file that will launch when the shortcut is run
-
             try
             {
                 shortcut.Save();
-                MessageBox.Show("created");
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
-            
         }
 
     }
