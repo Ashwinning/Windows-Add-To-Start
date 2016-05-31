@@ -259,12 +259,24 @@ a {
 }
 
 #big-download {
+    margin-top: 10px;
   color: #fff;
   text-decoration: none;
   border-color: #159957;
+    background-color: #0bbf65;
+  
+    -ms-transform: scale(1.5,1.5); /* IE 9 */
+    -webkit-transform: scale(1.5,1.5); /* Safari */
+    transform: scale(1.5,1.5);
   
 }
 #big-download:hover
 {
     background-color: #159957;
+}
+
+.code {
+    border-radius: 3px;
+    background-color: beige;
+    padding: 3px;
 }
