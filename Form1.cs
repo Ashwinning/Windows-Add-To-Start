@@ -37,6 +37,12 @@ namespace Windows_Add_To_Start
             Close();
         }
 
+        /// <summary>
+        /// Takes the filepath.
+        /// Copies it to the start menu if the file is a shortcut.
+        /// Creates a shortcut in the start menu for all other file types.
+        /// </summary>
+        /// <param name="path"></param>
         void CopyToStartMenu(string path)
         {
             //Get win root
@@ -67,6 +73,12 @@ namespace Windows_Add_To_Start
             //return;
         }
 
+        /// <summary>
+        /// Creates a shortcut.
+        /// </summary>
+        /// <param name="shortcutName"></param>
+        /// <param name="shortcutPath"></param>
+        /// <param name="targetFileLocation"></param>
         public static void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation)
         {
             string shortcutLocation = System.IO.Path.Combine(shortcutPath, shortcutName + ".lnk");
